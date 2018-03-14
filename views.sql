@@ -1,0 +1,3 @@
+CREATE OR REPLACE VIEW ipmonitor_sanitymaster AS Select Serialnumber as id,Serialnumber, Platform, BuildID, BuildName,sc.StatusType,sm.IsActive from activemqsubscriber.sanitymaster sm join activemqsubscriber.statuscodes sc on sc.StatusCode = sm.StatusCode where sm.isActive =1;
+
+CREATE OR REPLACE VIEW ipmonitor_agentdetail AS select AgentID as id,AgentID,AgentIP,SetupPlatform,sc.StatusType as AgentState, ag.downloadPercentage as DownloadPercentage from activemqsubscriber.agents ag join activemqsubscriber.statuscodes sc on sc.StatusCode = ag.agentstate;
